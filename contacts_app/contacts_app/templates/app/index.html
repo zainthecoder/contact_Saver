@@ -1,0 +1,51 @@
+{% extends "app/base.html" %}
+{% block body_block %}
+
+
+ <div class = "jumbotron">
+ <h1 align="center" style="font-family:OCR A Std, monospace">Space</h1>
+  <h2 align="center" style="font-family:OCR A Std, monospace">For You!</h2>
+
+ {% if user.is_authenticated %}
+<!-- id the user is loggen in then display thee
+contacts and give the option of adding a new number to the contacts models   -->
+ <h2 align="center" style="font-family:OCR A Std, monospace">Welcome {{ user.username }}</h2>
+   
+<form method="POST">
+	{% csrf_token %}
+	{{ contact_form.as_p }}
+	<input type="submit" name="" value="Add">
+	
+</form>
+
+<hr>
+<!-- Now we will display the list of the contacts -->
+
+
+
+ {% if users%}
+
+<div class="row">
+       {% for person in users %}
+<div class="col-sm-3">
+<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem; border-radius: 30px;">
+  <div class="card-body" style="background-color: lightgrey;">
+    <h3 class="card-title">{{person.name}}</h3>
+    <p class="card-text">Number: {{person.contact_entry}}</p>
+  </div>
+</div>
+</div>
+
+       {% endfor %}
+</div>
+ {% endif %}
+
+
+
+ {% else %}
+ <h2 align="center" style="font-family:OCR A Std, monospace">Welcome! Please Register</h2>
+{% endif %}
+
+</div>
+
+{% endblock %}
