@@ -3,5 +3,5 @@
 * Contacts management web application.
 * Providing free space for contacts.
 * Backend Technology: Django
-* Frontend Technology: Bootstrap
+* Frontend Technology: Html, css, Bootstrap
 * http://zainthecoder.pythonanywhere.com/
